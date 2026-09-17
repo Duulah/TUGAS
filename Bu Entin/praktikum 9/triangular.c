@@ -4,8 +4,9 @@
 int main(){
     int n, a = 0;
     scanf("%d", &n);
-    for (int i = 1; i <= n; i++){
+    for (int i = n; i >= 1; i--){
+        if(i>1) printf("%d + ", i);
         a += i;
     }
-    printf("%d", a);
+    printf("1 = %d", a);
 }

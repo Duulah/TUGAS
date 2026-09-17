@@ -16,5 +16,5 @@ int main(){
             scanf(" %c", &x);
         } while (x != 'y' && x != 't');   
     } while (x == 'y');
-    printf("Total Bilangan %d", a);
+    printf("Total Bilangan = %d", a);
 }
