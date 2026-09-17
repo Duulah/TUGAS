@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus AI — Kecerdasan Buatan untuk Bisnis Anda</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --hitam: #12172B;
+      --hitam-soft: rgb(75, 85, 117);
+      --biru: hsl(243, 75%, 59%);
+      --biru-dark: #3730A3;
+      --cyan: rgb(6, 182, 212);
+      --paper: white;
+      --canvas: hsl(220, 60%, 98%);
+      --canvas-alt: GhostWhite;
+      --line: #E3E8F5;
+      --shadow: rgba(18, 23, 43, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      color: var(--hitam);
+      background: var(--canvas);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    .wrap {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 96px 0;
+    }
+
+    .section-head {
+      max-width: 620px;
+      margin-bottom: 56px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      margin-bottom: 14px;
+    }
+
+    .section-head p {
+      color: var(--hitam-soft);
+      font-size: 1.05rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.98rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-primary {
+      background: var(--biru);
+      color: white;
+      box-shadow: 0 10px 24px -8px var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--biru-dark);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(250, 251, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .logo img {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: auto;
+      height: 32px;
+    }
+
+    .nav-link {
+      display: flex;
+      gap: 34px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--hitam-soft);
+    }
+
+    .nav-link a:hover {
+      color: var(--biru);
+    }
+
+    .hero {
+      padding: 24px 0 60px;
+      overflow: hidden;
+    }
+
+    .hero .wrap {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 56px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 4.6vw, 3.5rem);
+      margin-bottom: 22px;
+    }
+
+    .hero h1 .accent {
+      color: var(--biru);
+    }
+
+    .hero p {
+      color: var(--hitam-soft);
+      font-size: 1.12rem;
+      max-width: 480px;
+      margin-bottom: 34px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 36px;
+    }
+
+    .hero-stats div strong {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+    }
+
+    .hero-stats div span {
+      color: var(--hitam-soft);
+      font-size: 0.88rem;
+    }
+
+    .hero-img {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 8px;
+    }
+
+    .hero-img .glow {
+      position: absolute;
+      inset: -40px;
+      z-index: 0;
+      background: radial-gradient(circle at 60% 30%, hsla(243, 75%, 70%, 0.35), transparent 60%);
+      filter: blur(10px);
+    }
+
+    .hero-img img {
+      width: 80%;
+      height: 80%;
+    }
+
+    #fitur {
+      background: var(--canvas-alt);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .fitur-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .fitur-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 28px 26px;
+      box-shadow: 0 4px 18px -12px var(--shadow);
+    }
+
+    .fitur-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: hsla(243, 75%, 59%, 0.1);
+      color: var(--biru);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .fitur-icon img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .fitur-card h3 {
+      font-size: 1.08rem;
+      margin-bottom: 8px;
+    }
+
+    .fitur-card p {
+      color: var(--hitam-soft);
+      font-size: 0.94rem;
+    }
+
+    .price-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--paper);
+      box-shadow: 0 12px 30px -18px var(--shadow);
+    }
+
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 640px;
+    }
+
+    .price-table caption {
+      caption-side: bottom;
+      text-align: left;
+      padding: 16px 24px;
+      color: var(--hitam-soft);
+      font-size: 0.86rem;
+    }
+
+    .price-table th,
+    .price-table td {
+      padding: 18px 22px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .price-table thead th {
+      background: var(--canvas);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .price-table thead th .plan-price {
+      display: block;
+      font-size: 1.5rem;
+      margin-top: 6px;
+      color: var(--biru);
+    }
+
+    .price-table thead th .plan-unit {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--hitam-soft);
+    }
+
+    .price-table tbody th {
+      font-weight: 500;
+      color: var(--hitam-soft);
+      white-space: nowrap;
+    }
+
+
+    .price-table td.yes {
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    .price-table td.no {
+      color: #C6CBDA;
+    }
+
+    .price-table .col-featured {
+      background: hsla(243, 75%, 59%, 0.05);
+    }
+
+
+    #kontak {
+      background: linear-gradient(180deg, var(--canvas-alt) 0%, var(--canvas) 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 20px 44px -24px var(--shadow);
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+    }
+
+    .contact-info {
+      padding: 44px 40px;
+      border-right: 1px solid var(--line);
+    }
+
+    .contact-info h2 {
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+    }
+
+    .contact-info p {
+      color: var(--hitam-soft);
+      margin-bottom: 28px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+      font-size: 0.94rem;
+    }
+
+    .contact-form {
+      padding: 44px 40px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.86rem;
+      font-weight: 600;
+      margin-bottom: 7px;
+      color: var(--hitam);
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      background: var(--canvas);
+      color: var(--hitam);
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      outline: 2px solid var(--biru);
+      outline-offset: 1px;
+      background: var(--paper);
+    }
+
+    footer {
+      background: var(--hitam);
+      color: #C9CEE0;
+      padding: 64px 0 28px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 52px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: white;
+      margin-bottom: 14px;
+    }
+
+    .footer-logo img {
+      width: 25px;
+      height: 25px;
+      object-fit: cover;
+      object-position: left center;
+    }
+
+    .footer-grid p {
+      font-size: 0.9rem;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      color: white;
+      font-size: 0.92rem;
+      margin-bottom: 16px;
+    }
+
+    .footer-col li {
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+
+    .footer-col a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #2A3050;
+      padding-top: 26px;
+      font-size: 0.85rem;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 14px;
+    }
+
+    .social-links a {
+      width: 36px;
+      height: 36px;
+      border-radius: 16px;
+      background: var(--paper);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--biru);
+    }
+
+    .social-links img {
+
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 900px) {
+      .hero .wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-img {
+        order: -1;
+      }
+
+      .fitur-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-info {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      section {
+        padding: 64px 0;
+      }
+
+      .nav-link {
+        display: none;
+      }
+
+      .fitur-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        gap: 24px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <img src="pict/logo.png" alt="logo_navigasi">
+      </div>
+      <nav class="nav-link">
+        <a href="#beranda">Beranda</a>
+        <a href="#fitur">Fitur</a>
+        <a href="#harga">Harga</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="beranda" class="hero">
+      <div class="wrap">
+        <div class="hero-intro">
+          <h1>Otomatisasi bisnis Anda dengan <span class="accent">kecerdasan buatan</span> yang benar‑benar mengerti
+            data Anda.</h1>
+          <p>Nexus AI membantu tim membangun asisten cerdas, mengotomatiskan alur kerja, dan mengambil keputusan lebih
+            cepat — tanpa perlu tim data science besar.</p>
+          <div class="hero-stats">
+            <div><strong>1.200+</strong><span>Perusahaan pengguna</span></div>
+            <div><strong>99,95%</strong><span>Uptime terjamin</span></div>
+            <div><strong>24/7</strong><span>Dukungan teknis</span></div>
+          </div>
+        </div>
+        <div class="hero-img">
+          <div class="glow"></div>
+          <img src="pict/img_home.png" alt="home img">
+        </div>
+      </div>
+    </section>
+
+    <section id="fitur">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Semua yang dibutuhkan tim Anda dalam satu platform</h2>
+          <p>Dari model bahasa hingga keamanan tingkat perusahaan, Nexus AI dirancang agar tim non-teknis pun bisa
+            membangun solusi AI dengan cepat.</p>
+        </div>
+        <div class="fitur-grid">
+
+          <div class="fitur-card">
+            <div class="fitur-icon">
+              <img src="pict/icon1.png" alt="icon1">
+            </div>
+            <h3>Model Bahasa Kustom</h3>
+            <p>Latih model AI dengan data dan istilah spesifik industri Anda, tanpa menulis satu baris kode pun.</p>
+          </div>
+
+          <div class="fitur-card">
+            <div class="fitur-icon">
+              <img src="pict/icon2.png" alt="icon2">
+            </div>
+            <h3>Otomatisasi Alur Kerja</h3>
+            <p>Hubungkan AI ke proses bisnis Anda dan biarkan tugas berulang berjalan tanpa campur tangan manual.</p>
+          </div>
+
+          <div class="fitur-card">
+            <div class="fitur-icon">
+              <img src="pict/icon3.png" alt="icon3">
+            </div>
+            <h3>Analitik Real-time</h3>
+            <p>Pantau performa model dan dampak bisnisnya melalui dasbor yang diperbarui secara langsung.</p>
+          </div>
+
+          <div class="fitur-card">
+            <div class="fitur-icon">
+              <img src="pict/icon4.png" alt="icon4">
+            </div>
+            <h3>Integrasi API Terbuka</h3>
+            <p>Sambungkan Nexus AI ke sistem yang sudah Anda pakai lewat REST API dan webhook yang terdokumentasi rapi.
+            </p>
+          </div>
+
+          <div class="fitur-card">
+            <div class="fitur-icon">
+              <img src="pict/icon5.png" alt="icon5">
+            </div>
+            <h3>Keamanan Tingkat Enterprise</h3>
+            <p>Enkripsi end-to-end, kontrol akses granular, dan kepatuhan terhadap standar keamanan data global.</p>
+          </div>
+
+          <div class="fitur-card">
+            <div class="fitur-icon">
+              <img src="pict/icon6.png" alt="icon6">
+            </div>
+            <h3>Dukungan 24/7</h3>
+            <p>Tim dukungan teknis kami siap membantu kapan pun, di mana pun Anda berada.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="harga">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Paket harga yang sesuai skala bisnis Anda</h2>
+          <p>Mulai gratis, lalu tingkatkan seiring pertumbuhan kebutuhan tim Anda. Tidak ada biaya tersembunyi.</p>
+        </div>
+
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <caption>Semua harga dalam USD, ditagih per bulan. Paket tahunan mendapat diskon 20%.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Fitur</th>
+                <th scope="col">
+                  Starter
+                  <span class="plan-price">$29 <span class="plan-unit">/bulan</span></span>
+                </th>
+                <th scope="col" class="col-featured">
+                  Pro
+                  <span class="plan-price">$99 <span class="plan-unit">/bulan</span></span>
+                </th>
+                <th scope="col">
+                  Enterprise
+                  <span class="plan-price">Kustom</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Permintaan API / bulan</th>
+                <td>10.000</td>
+                <td class="col-featured">150.000</td>
+                <td>Tanpa batas</td>
+              </tr>
+              <tr>
+                <th scope="row">Model AI kustom</th>
+                <td class="no">✕</td>
+                <td class="col-featured yes">✓</td>
+                <td class="yes">✓</td>
+              </tr>
+              <tr>
+                <th scope="row">Integrasi API &amp; webhook</th>
+                <td class="yes">✓</td>
+                <td class="col-featured yes">✓</td>
+                <td class="yes">✓</td>
+              </tr>
+              <tr>
+                <th scope="row">Dasbor analitik</th>
+                <td>Dasar</td>
+                <td class="col-featured">Lengkap</td>
+                <td>Lengkap + ekspor</td>
+              </tr>
+              <tr>
+                <th scope="row">Dukungan</th>
+                <td>Email</td>
+                <td class="col-featured">Email &amp; chat prioritas</td>
+                <td>Manajer akun khusus</td>
+              </tr>
+              <tr>
+                <th scope="row">SLA uptime</th>
+                <td>—</td>
+                <td class="col-featured">99,9%</td>
+                <td>99,95%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontak">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Mari bicarakan kebutuhan AI Anda</h2>
+          <p>Isi formulir di bawah ini dan tim kami akan menghubungi Anda dalam 1x24 jam kerja.</p>
+        </div>
+
+        <div class="contact-panel">
+          <div class="contact-info">
+            <h2>Hubungi Kami</h2>
+            <p>Punya pertanyaan tentang paket, integrasi, atau butuh demo langsung? Tim kami siap membantu.</p>
+              <span class="contact-item">Telp. 021 555 0192</span>
+              <span class="contact-item">WhatsApp: +62 123 4567 8900</span>
+              <span class="contact-item">Email: hello@nexus.ai</span>
+              <span class="contact-item">Jl. Teknologi No. 10, Surabaya, Indonesia</span>
+          </div>
+
+          <form class="contact-form" action="#" method="post">
+            <div class="form-row">
+              <div class="field">
+                <label for="nama">Nama Lengkap</label>
+                <input type="text" id="nama" name="nama" placeholder="Nama Anda" required>
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="nama@perusahaan.com" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="perusahaan">Perusahaan</label>
+                <input type="text" id="perusahaan" name="perusahaan" placeholder="Nama perusahaan">
+              </div>
+              <div class="field">
+                <label for="paket">Paket yang diminati</label>
+                <select id="paket" name="paket">
+                  <option value="">-- Pilih paket --</option>
+                  <option value="starter">Starter</option>
+                  <option value="pro">Pro</option>
+                  <option value="enterprise">Enterprise</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="pesan">Pesan</label>
+              <textarea id="pesan" name="pesan" placeholder="Ceritakan kebutuhan Anda..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <img src="pict/logo.png" alt="logo">
+            Nexus Ai
+          </div>
+          <p>Membantu bisnis membangun dan menerapkan solusi kecerdasan buatan dengan aman dan cepat.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Produk</h4>
+          <ul>
+            <li><a href="#fitur">Fitur</a></li>
+            <li><a href="#harga">Harga</a></li>
+            <li><a href="#kontak">Demo</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Perusahaan</h4>
+          <ul>
+            <li><a href="#beranda">Tentang Kami</a></li>
+            <li><a href="#">Karier</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Kebijakan Privasi</a></li>
+            <li><a href="#">Syarat Layanan</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Nexus AI. Seluruh hak cipta dilindungi.</span>
+        <div class="social-links">
+          <a href="#" aria-label="LinkedIn"><img src="pict/linkedin.png" alt="LinkedIn"></a>
+          <a href="#" aria-label="Twitter/X"><img src="pict/twitter.png" alt="Twitter"></a>
+          <a href="#" aria-label="GitHub"><img src="pict/github.png" alt="GitHub"></a>
+          <a href="#" aria-label="Instagram"><img src="pict/instagram.png" alt="Instagram"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nama Kamu — Portofolio Multimedia</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Quicksand:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAF5EA;
+      --bg-alt: #EFF1E2;
+      --ink: #3A342B;
+      --ink-soft: #6B6355;
+      --red: #FF7A5C;
+      --red-dark: #E15A3D;
+      --sage: #6E9A85;
+      --yellow: #F2AE30;
+      --line: #E3D9C3;
+      --card: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Work Sans', sans-serif;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Quicksand', sans-serif;
+      color: var(--ink);
+      margin: 0 0 0.4em 0;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 1.65em;
+    }
+
+    .script {
+      font-family: 'Caveat', cursive;
+    }
+
+
+    a {
+      color: var(--red-dark);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    p {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    @media (min-width: 860px) {
+      .wrap {
+        max-width: 960px;
+      }
+
+      .music-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+    }
+
+    .highlight {
+      border-bottom: 2px dashed var(--yellow);
+    }
+
+    header {
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav.top {
+      margin: 0 auto;
+      padding: 20px 24px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px clamp(16px, 16px + 4vw, 128px);
+      font-size: 0.95rem;
+    }
+
+    nav.top a {
+      text-decoration: none;
+      color: var(--ink-soft);
+      padding: 4px 2px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.top a:hover,
+    nav.top a:focus {
+      color: var(--ink);
+      border-bottom-color: var(--red);
+    }
+
+    .hero {
+      position: relative;
+      padding: 48px 0 64px;
+    }
+
+
+    .hero .hi {
+      font-size: 1.8rem;
+      color: var(--red-dark);
+      display: inline-block;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      max-width: 52ch;
+      color: var(--ink-soft);
+      font-size: 1rem;
+    }
+
+
+    .fade-in {
+      animation: fadeUp .7s ease both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    section {
+      position: relative;
+      padding: 64px 0;
+    }
+
+    .bg-alt {
+      background: var(--bg-alt);
+    }
+
+    .tag-note {
+      display: inline-block;
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      color: var(--ink);
+      background: var(--yellow);
+      padding: 3px 10px 6px;
+      border-radius: 3px 14px 3px 14px;
+      transform: rotate(-2deg);
+      margin-bottom: 14px;
+    }
+
+    .video-frame {
+      background: var(--card);
+      padding: 14px 14px 18px;
+      border-radius: 6px;
+      box-shadow: 0 14px 28px -14px rgba(58, 52, 40, .35);
+      transform: rotate(-1.2deg);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .video-frame video {
+      width: 100%;
+      border-radius: 3px;
+      background: #000;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    .video-frame figcaption {
+      font-family: 'Caveat', cursive;
+      font-size: 1.15rem;
+      text-align: center;
+      padding-top: 8px;
+      color: var(--ink-soft);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .skills {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 8px;
+    }
+
+    .skills li {
+      padding: 7px 14px;
+      font-size: .92rem;
+      border-radius: 14px 6px 14px 6px;
+      color: var(--ink);
+    }
+
+    .skills li:nth-child(5n+1) {
+      background: #FBD9A5;
+      transform: rotate(-2deg);
+    }
+
+    .skills li:nth-child(5n+2) {
+      background: #CFE3D6;
+      transform: rotate(1.5deg);
+    }
+
+    .skills li:nth-child(5n+3) {
+      background: #FFD0C2;
+      transform: rotate(-1deg);
+    }
+
+    .skills li:nth-child(5n+4) {
+      background: #E4D9F7;
+      transform: rotate(2deg);
+    }
+
+    .skills li:nth-child(5n+5) {
+      background: #F6E7A8;
+      transform: rotate(-1.5deg);
+    }
+
+    .music-wrap {
+      margin-top: 24px;
+    }
+
+    .music-card {
+      border: 2px dashed var(--sage);
+      border-radius: 16px 4px 16px 4px;
+      padding: 22px 24px;
+      min-width: 320px;
+      max-width: 600px;
+
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: var(--ink);
+      text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.9), 0px 0px 2px rgba(0, 0, 0, 1);
+      font-weight: bold;
+      color: #F7F2E7;
+    }
+
+    #mcard-1 {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)), url(asset/pict/bgsong1.jpg);
+      color: #FBD9A5;
+      background-position: center;
+    }
+
+    #mcard-2 {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)), url(asset/pict/bgsong2.jpg);
+      color: #FFD0C2;
+      background-position: center;
+    }
+
+    #mcard-3 {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)), url(asset/pict/bgsong3.jpg);
+      color: #F6E7A8;
+      background-position: center;
+    }
+
+    #mcard-4 {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)), url(asset/pict/bgsong4.jpg);
+      color: #CFE3D6;
+      background-position: center;
+    }
+
+    #mcard-5 {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)), url(asset/pict/bgsong5.jpg);
+      color: #E4D9F7;
+      background-position: center;
+    }
+
+
+    .music-card audio {
+      width: 100%;
+      accent-color: var(--red);
+      margin-top: 6px;
+      opacity: 0.3;
+      /* Nilai 0.85 bikin transparan tapi tetap jelas */
+      transition: opacity 0.3s ease;
+    }
+
+    .music-card audio:hover {
+      opacity: 1;
+    }
+
+    #status-musik {
+      font-size: .9rem;
+      color: rgba(255, 255, 255, .8);
+      margin-top: 8px;
+      min-height: 1.2em;
+      font-weight: 500;
+    }
+
+  
+    .yt-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 14px 28px -16px rgba(58, 52, 40, .3);
+    }
+
+    .yt-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .cv-frame {
+      background: var(--card);
+      padding: 16px;
+      border-radius: 4px 16px 4px 16px;
+      box-shadow: 0 14px 26px -16px rgba(58, 52, 40, .3);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .cv-frame embed {
+      width: 100%;
+      height: 600px;
+      border: 2px solid var(--ink);
+      border-radius: 3px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 14px;
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 8px 3px;
+      font-weight: 600;
+      font-size: .95rem;
+    }
+
+    .btn:hover {
+      background: var(--red-dark);
+    }
+
+    footer {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    footer .wrap {
+      padding: 40px 24px 34px;
+    }
+
+    footer a {
+      color: var(--yellow);
+      text-decoration: none;
+    }
+
+    footer .sign {
+      font-family: 'Caveat', cursive;
+      font-size: 1.4rem;
+      margin-top: 10px;
+      color: var(--bg);
+    }
+
+    footer .muted {
+      color: #C9C2B4;
+      font-size: .85rem;
+    }
+
+    @media (max-width: 640px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .video-frame {
+        transform: rotate(0);
+      }
+
+      nav.top {
+        font-size: .85rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .fade-in,
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav class="top">
+      <a href="#video-intro">Video</a>
+      <a href="#tentang">Tentang</a>
+      <a href="#musik">Musik</a>
+      <a href="#tonton">Tonton Ini</a>
+      <a href="#cv">CV</a>
+    </nav>
+
+    <div class="hero fade-in">
+      <div class="wrap">
+      <span class="hi script">Hai, kenalin namaku</span>
+      <h1><span class="highlight">Hamzah Asadullah</span></h1>
+      <p>
+        Mahasiswa <span class="highlight">Teknik Informatika</span>
+        yang suka ngoprek hal berbau coding, website, dan sedikit desain visual.
+        Halaman ini saya buat sebagai tugas mata kuliah Workshop Web Desain, yaitu Membuat Halaman Multimedia
+        Portofolio.
+        Website ini akan menampilkan video introduksi singkat, audio untuk memutar musik latar, embed video YouTube yang
+        relevan dengan keahlian saya, serta PDF embed untuk menampilkan CV.
+      </p>
+      </div>
+    </div>
+  </header>
+
+  <main id="konten">
+    <section id="video-intro" class="bg-alt section-pad">
+      <div class="wrap">
+        <span class="tag-note">Introduce</span>
+        <h2>Video Perkenalan Singkat</h2>
+        <p>Video di bawah masih rekaman contoh, nanti aku ganti dengan video perkenalan
+          asli begitu kalau inget</p>
+
+        <figure class="video-frame">
+          <video controls poster="" preload="none">
+            <source src="asset/placeholder.mp4" type="video/mp4">
+            Browser kamu belum mendukung pemutar video.
+          </video>
+          <figcaption>video perkenalan(masih menggunakan placeholder)</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="tentang" class="section-pad">
+      <div class="wrap about-grid">
+        <div>
+          <span class="tag-note">About Me</span>
+          <h2>Tentang &amp; Minat</h2>
+          <p>Portofolio multimedia ini jadi tempat saya bereksperimen membuat tampilan web yang interaktif, rapi, dan responsif. Bagi saya, membuat web bukan hanya soal baris kode yang berjalan, tapi juga soal membangun pengalaman pengguna yang seru dan nyaman.
+             Minat saya tidak berhenti di web saja, saya juga suka mengulik mekanika gim, fitur-fitur canggih, dan estetika visual. Supaya pikiran tetap segar dan ide terus mengalir, saya biasa melatih fokus dengan mencari inspirasi dari anime dan gim. Kombinasi antara logika, imajinasi, dan rasa penasaran inilah yang selalu mendorong saya untuk terus berkarya.
+          </p>
+        </div>
+        <ul class="skills">
+          <li>Fotografi</li>
+          <li>Desain Grafis</li>
+          <li>Edit Video Receh</li>
+          <li>Riset Tengah Malam</li>
+          <li>Musik Buat Nemenin Kerja</li>
+        </ul>
+      </div>
+    </section>
+
+
+
+    <section id="musik" class="bg-alt section-pad">
+      <div class="wrap">
+        <span class="tag-note">My Playlist</span>
+        <h2>🎧 Musik Buat Nemenin</h2>
+        <p>Sambil baca-baca portofolio ini pelan-pelan, boleh banget nyalain lagu instrumental
+          di bawah. Ini masih lagu placeholder — versi finalnya nanti aku ganti
+          dengan musik favorit yang bebas hak cipta.</p>
+        <div class="music-wrap">
+          <div class="music-card" id="mcard-1">
+            <strong>1. If There Was an Endpoint - TUYU</strong>
+            <audio controls controlsList="nodownload noplaybackrate" loop preload="none">
+              <source src="asset/audio/If-There-Was-an-Endpoint.mp3" type="audio/mpeg">
+              <source src="asset/audio/If-There-Was-an-Endpoint.mp3" type="audio/ogg">
+              Browser kamu belum mendukung pemutar audio. 
+              Silahkan dengarakan musiknya <a href="https://youtu.be/vcw5THyM7Jo?si=EGeNbp6pLVG2gEYo">DI SINI</a>.
+            </audio>
+          </div>
+
+          <div class="music-card" id="mcard-2">
+            <strong>2. Under Kids - TUYU</strong>
+            <audio  controls controlsList="nodownload noplaybackrate" loop preload="none">
+              <source src="asset/audio/Under-Kids.mp3" type="audio/mpeg">
+              <source src="asset/audio/Under-Kids.mp3" type="audio/ogg">
+              Browser kamu belum mendukung pemutar audio. 
+              Silahkan dengarakan musiknya <a href="https://youtu.be/TBoBfT-_sfM?si=BHWxrYwjLBa8UK0V">DI SINI</a>.
+            </audio>
+          </div>
+
+          <div class="music-card" id="mcard-3">
+            <strong>3. Loser Girl - TUYU</strong>
+            <audio  controls controlsList="nodownload noplaybackrate" loop preload="none">
+              <source src="asset/audio/Loser-Girl.mp3" type="audio/mpeg">
+              <source src="asset/audio/Loser-Girl.mp3" type="audio/ogg">
+              Browser kamu belum mendukung pemutar audio. 
+              Silahkan dengarakan musiknya <a href="https://youtu.be/6rg4cYlAKOc?si=12DaHV1j7jAe_vEB">DI SINI</a>.
+            </audio>
+          </div>
+
+          <div class="music-card" id="mcard-4">
+            <strong>4. Being Low as Dirt, Taking What's Important From Me - TUYU</strong>
+            <audio  controls controlsList="nodownload noplaybackrate" loop preload="none">
+              <source src="asset/audio/Being-Low-as-Dirt.mp3" type="audio/mpeg">
+              <source src="asset/audio/Being-Low-as-Dirt.mp3" type="audio/ogg">
+              Browser kamu belum mendukung pemutar audio. 
+              Silahkan dengarakan musiknya <a href="https://youtu.be/M7FH1dL51oU?si=dIlRu7dhMTvKJrN3">DI SINI</a>.
+            </audio>
+          </div>
+
+          <div class="music-card" id="mcard-5">
+            <strong>5. Even Tears Withered - TUYU</strong>
+            <audio  controls controlsList="nodownload noplaybackrate" loop preload="none">
+              <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+              <source src="asset/audio/If-There-Was-an-Endpoint.mp3" type="audio/ogg">
+              Browser kamu belum mendukung pemutar audio. 
+              Silahkan dengarakan musiknya <a href="https://youtu.be/5xfNTyy-Xhk?si=awOZFFbEaadb_xKT">DI SINI</a>.
+            </audio>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+
+    <section id="tonton" class="section-pad">
+      <div class="wrap">
+        <span class="tag-note">My Passion</span>
+        <h2>Video yang Related Sama Minatku</h2>
+        <p>Ini video YouTube soal <em>growth mindset</em> — lumayan related sama gimana aku
+          belajar hal baru di dunia desain &amp; multimedia. Ini juga masih placeholder,
+          gampang kok tinggal ganti ID video-nya sama video favorit atau karya kamu sendiri.</p>
+
+        <div class="yt-wrap">
+          <iframe src="https://www.youtube.com/embed/l88pPofswGM" title="Video YouTube yang relevan dengan minat"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section id="cv" class="bg-alt section-pad">
+      <div class="wrap">
+        <span class="tag-note">Curriculum Vitae</span>
+        <h2>CV Lengkap</h2>
+        <p>Detail pengalaman dan kompetensi saya tercantum di cv ini. 
+          Anda juga dapat mengunduhnya melalui tombol di bawah.</p>
+
+        <div class="cv-frame">
+          <embed src="https://drive.google.com/file/d/170jgaO7xkNG3Af2NRrpwmgArrJgHlg9e/preview" type="application/pdf">
+          <p style="font-size:.85rem; color:var(--ink-soft); margin-top:10px;">
+            Jika PDF tidak muncul, unduh langsung lewat tombol ini.
+          </p>
+          <a class="btn" href="https://drive.google.com/file/d/170jgaO7xkNG3Af2NRrpwmgArrJgHlg9e/view?usp=drive_link" download>Unduh CV</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p class="muted">Ada pertanyaan atau mau kolaborasi? Kontak aku di:</p>
+      <p>
+        <span class="highlight">nama.kamu@email.com</span>
+        &nbsp;·&nbsp;
+        <a href="#" class="highlight">instagram.com/username</a>
+      </p>
+      <p class="sign">dibuat dengan usaha (dan sedikit kopi) — Nama Kamu, 2026</p>
+    </div>
+  </footer>
+
+
+
+</body>
+
+</html>

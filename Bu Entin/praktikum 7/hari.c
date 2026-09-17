@@ -8,19 +8,28 @@ int main(){
     switch (a)
     {
     case 1:
-        printf("Minggu");
+        printf("Senin");
         break;
     case 2:
-        printf("Minggu");
+        printf("Selasa");
         break;
     case 3:
+        printf("Rabu");
+        break;
+    case 4:
+        printf("Kamis");
+        break;
+    case 5:
+        printf("Jumat");
+        break;
+    case 6:
+        printf("Sabtu");
+        break;
+    case 7:
         printf("Minggu");
         break;
-    case 3:
-        printf("Minggu");
-        break;
-
     default:
+        printf("Hari Tidak Valid");
         break;
     }
 }
