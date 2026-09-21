@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" width="600" height="420">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffdcd2"/><stop offset="1" stop-color="#f09a86"/></linearGradient></defs>
+<rect width="600" height="420" fill="url(#bg)"/>
+<circle cx="468" cy="104" r="126" fill="#d84a32" opacity="0.42"/>
+<path d="M0 296 L600 206 L600 420 L0 420 Z" fill="#d84a32" opacity="0.2"/>
+<path d="M0 350 L600 284 L600 420 L0 420 Z" fill="#f09a86" opacity="0.55"/>
+<text x="46" y="70" font-family="Georgia, serif" font-size="19" letter-spacing="3" fill="#4d1a12" opacity="0.7">Panelogi</text>
+<rect x="46" y="86" width="58" height="3" fill="#4d1a12" opacity="0.55"/>
+<text x="46" y="244" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="700" fill="#4d1a12">Rantai Batu</text><text x="46" y="300" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="700" fill="#4d1a12">Merah</text>
+</svg>
